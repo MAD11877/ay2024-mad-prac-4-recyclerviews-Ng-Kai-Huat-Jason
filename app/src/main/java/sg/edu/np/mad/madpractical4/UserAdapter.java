@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
     // This ArrayList holds the list of User objects to be displayed in the RecyclerView
-    private final ArrayList<User> list_objects;
+    private ArrayList<User> list_objects;
 
     // Constructor to initialize the adapter with the list of User objects
     public UserAdapter(ArrayList<User> list_objects) {
