@@ -99,14 +99,33 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder> {
         holder.bigImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Log a message when small image is clicked
+                // Log a message (optional)
                 Log.d("UserAdapter", "Big image clicked for user: " + user.getName());
 
                 // Create and show alert dialog for small image
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("Profile ( Big Image )");
                 builder.setMessage("You clicked the big image for user: " + user.getName());
-                builder.setPositiveButton("View", null); // Set a neutral button
+
+                int clickeduserid = user.getID(); // Get clicked user ID
+
+                builder.setPositiveButton("View", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Get User object based on position in list
+                        User ClickedUser = null;
+                        for( User user : list_objects){
+                            if(user.getID() == clickeduserid){
+                                ClickedUser = user;
+                                break;
+                            }
+                        }
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        intent.putExtra("ClickedUser",ClickedUser);
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
                 builder.setNegativeButton("Close", null); // Add negative button
                 builder.create().show();
             }
