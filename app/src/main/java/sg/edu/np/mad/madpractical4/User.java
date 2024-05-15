@@ -1,5 +1,6 @@
 package sg.edu.np.mad.madpractical4;
 
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -19,21 +20,32 @@ public class User implements Serializable {
         return name;
     }
 
-    public void setName(String username) {
-        this.name = username;
-    }
-
-    public void setFollowed(Boolean follow){
-        this.followed = follow;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public int getID(){return id;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public boolean getFollowed() {
         return followed;
     }
+
+    public void setFollowed(boolean followed) {
+        this.followed = followed;
+    }
 }
+
